@@ -12,15 +12,14 @@ const SplitsService = {
     distributorFee,
     controller
   ) =>
-    contract.createSplit(
-      accounts,
-      percentAllocations,
-      distributorFee,
-      controller
-    ),
+    {
+      // TODO: fill this in following 0xSplits ABI (createSplit).
+    },
 
   percentageScale: (contract, account) =>
-    contract.methods.PERCENTAGE_SCALE().call({ from: account }),
+    {
+      // TODO: fill this in following 0xSplits ABI (PERCENTAGE_SCALE).
+    },
 
   getSplitAccounts: (collaborators) => {
     const accounts = collaborators.reduce(
