@@ -17,9 +17,7 @@ const CreateSplitButton = ({ splitData }) => {
   const createSplit = async () => {
     setError();
     setLoading(true);
-    console.log("SUMMING SPLITS");
     const sum = Splits.sumSplits(splitData);
-    console.log("SUM", sum);
     if (sum !== 100) {
       notifyRequirements(`Sum is ${sum} but splits must be equal to 100`);
       return;
@@ -42,7 +40,6 @@ const CreateSplitButton = ({ splitData }) => {
       "0x2ed6c4B5dA6378c7897AC67Ba9e43102Feb694EE",
       signer
     );
-    console.log("CONTRACT", contract);
     const accounts = Splits.getSplitAccounts(sortedSplitData);
     if (accounts.includes(undefined)) {
       notifyRequirements("Please fill in all accounts");
@@ -60,7 +57,6 @@ const CreateSplitButton = ({ splitData }) => {
       sortedSplitData,
       scale
     );
-    console.log("PERCENT ALLOCATIONS", percentAllocations);
     if (percentAllocations.includes(NaN) || percentAllocations.includes(0)) {
       notifyRequirements("Please fill out all percentage share fields");
       return;
@@ -77,16 +73,10 @@ const CreateSplitButton = ({ splitData }) => {
         account
       );
 
-      console.log("RESPONSe", response);
-
       const receipt = await response.wait();
-      console.log("RECEIPT", receipt);
-      const events = await contract.filters.CreateSplit();
-      console.log("EVENTS", events);
       const event = receipt.events.find(
         (event) => event.event === "CreateSplit"
       );
-      console.log("EVENT", event);
 
       onSplitResponse(event.args.split);
     } catch (e) {
@@ -94,10 +84,8 @@ const CreateSplitButton = ({ splitData }) => {
     }
   };
 
-  const onSplitResponse = (splitsAddress) => {
-    console.log("SUCCESS", splitsAddress);
+  const onSplitResponse = (splitsAddress) =>
     notifyRequirements(`0xSplit Created!!! Address: ${splitsAddress}`);
-  };
 
   return (
     <>

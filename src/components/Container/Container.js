@@ -15,7 +15,6 @@ const Container = () => {
   const { activate, account } = useWeb3React();
 
   const handleCellChanged = (e) => {
-    console.log("CELL CHANGED", e);
     const newRows = [...rows];
     newRows[e.id - 1][e.field] = e.value;
     setRows(newRows);
