@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Typography, Button, CircularProgress } from "@mui/material";
 import { ethers } from "ethers";
 
-const CreateSplitButton = ({ onSplitResponse, splitData }) => {
+const CreateSplitButton = ({ splitData }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const { account } = useWeb3React();
@@ -60,7 +60,8 @@ const CreateSplitButton = ({ onSplitResponse, splitData }) => {
       sortedSplitData,
       scale
     );
-    if (percentAllocations.includes(NaN)) {
+    console.log("PERCENT ALLOCATIONS", percentAllocations);
+    if (percentAllocations.includes(NaN) || percentAllocations.includes(0)) {
       notifyRequirements("Please fill out all percentage share fields");
       return;
     }
@@ -76,11 +77,26 @@ const CreateSplitButton = ({ onSplitResponse, splitData }) => {
         account
       );
 
-      onSplitResponse?.(response);
-      setLoading(false);
+      console.log("RESPONSe", response);
+
+      const receipt = await response.wait();
+      console.log("RECEIPT", receipt);
+      const events = await contract.filters.CreateSplit();
+      console.log("EVENTS", events);
+      const event = receipt.events.find(
+        (event) => event.event === "CreateSplit"
+      );
+      console.log("EVENT", event);
+
+      onSplitResponse(event.args.split);
     } catch (e) {
       setLoading(false);
     }
+  };
+
+  const onSplitResponse = (splitsAddress) => {
+    console.log("SUCCESS", splitsAddress);
+    notifyRequirements(`0xSplit Created!!! Address: ${splitsAddress}`);
   };
 
   return (

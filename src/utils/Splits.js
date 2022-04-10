@@ -10,18 +10,10 @@ const SplitsService = {
     accounts,
     percentAllocations,
     distributorFee,
-    controller,
-    account
-  ) =>
-    contract.createSplit(
-      accounts,
-      percentAllocations,
-      distributorFee,
-      controller
-    ),
+    controller
+  ) => {},
 
-  percentageScale: (contract, account) =>
-    contract.methods.PERCENTAGE_SCALE().call({ from: account }),
+  percentageScale: (contract, account) => {},
 
   getSplitAccounts: (collaborators) => {
     const accounts = collaborators.reduce(
