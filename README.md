@@ -9,7 +9,7 @@
 
 ## Lesson 7
 
-1. Checkout repo: `git pull origin git@github.com:SweetmanTech/0xSplits-Demo.git`
+1. Checkout repo: `git clone git@github.com:SweetmanTech/0xSplits-Demo.git`
 2. Change directory: `cd 0xSplits-Demo`
 3. Install packages: `yarn` or `npm i`
 4. Run app: `yarn start` or `npm run start`
