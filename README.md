@@ -7,6 +7,9 @@
 - [0xSplits Github](https://github.com/0xSplits)
 - [0xSplits Documentation](https://docs.0xsplits.xyz/)
 
+## Free Lesson Videos.
+- View all lessons for free on [Youtube here](https://www.youtube.com/watch?v=_OoehngIv4E&list=PLUIDNoExzm94WsSM3uCHu-hfOXo64zCYg).
+
 ## Lesson 7 - Project Setup
 
 1. Checkout repo: `git clone git@github.com:SweetmanTech/0xSplits-Demo.git`
