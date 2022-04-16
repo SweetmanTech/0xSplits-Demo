@@ -37,7 +37,11 @@ const DistributeSplitButton = ({
       {loading ? (
         <CircularProgress />
       ) : (
-        <Button variant="outlined" onClick={handleButtonClick}>
+        <Button
+          variant="outlined"
+          onClick={handleButtonClick}
+          disabled={!account}
+        >
           Distribute Funds
         </Button>
       )}

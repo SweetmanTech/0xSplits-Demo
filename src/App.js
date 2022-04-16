@@ -5,6 +5,7 @@ import getLibrary from "./hooks/getLibrary";
 import CreateSplitContainer from "./components/CreateSplitContainer";
 import DistributeSplitContainer from "./components/DistributeSplitContainer";
 import { Box } from "@mui/material";
+import WithdrawSplitContainer from "./components/WithdrawSplitContainer";
 
 function App() {
   const [accounts, setAccounts] = useState();
@@ -24,6 +25,9 @@ function App() {
             percentAllocations={percentageAllocations}
             distributorFee={distributorFee}
           />
+        </Box>
+        <Box pt={3}>
+          <WithdrawSplitContainer />
         </Box>
       </div>
     </Web3ReactProvider>
