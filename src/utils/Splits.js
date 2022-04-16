@@ -35,9 +35,14 @@ const SplitsService = {
     percentAllocations,
     distributorFee,
     distributorAddress
-  ) => {
-    // TODO: fill in this fx following docs here: https://docs.0xsplits.xyz/smartcontracts/SplitMain#distributeeth
-  },
+  ) =>
+    contract.distributeETH(
+      split,
+      accounts,
+      percentAllocations,
+      distributorFee,
+      distributorAddress
+    ),
 
   getSplitAccounts: (collaborators) => {
     const accounts = collaborators.reduce(
