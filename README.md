@@ -48,3 +48,19 @@
 7. Paste the created contract address in the Distribute ETH TextField.
 8. Click "Distribute Funds" button.
 9. Verify the tx was successful in PolygonScan.
+
+## Lesson 10 - Withdraw ETH / MATIC
+
+1. Checkout branch: `git checkout lesson/10/withdraw`
+2. Open code editor: `code ./`
+3. Run app: `yarn start` or `npm run start`
+4. Fill in missing methods in `src/utils/Splits.js`.
+
+- `withdraw` defined [here](https://docs.0xsplits.xyz/smartcontracts/SplitMain#withdraw).
+
+5. Create a Split in the UI!
+6. Send MATIC (mumbai) into your SplitsWallet.
+7. Paste the created contract address in the Distribute ETH TextField.
+8. Click "Distribute Funds" button.
+9. Click "Withdraw" button.
+10. Verify the tx was successful in PolygonScan.
