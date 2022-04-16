@@ -44,9 +44,8 @@ const SplitsService = {
       distributorAddress
     ),
 
-  withdraw: (contract, account, withdrawETH, tokens) => {
-    // TODO: complete this method be following 0xSplits here: https://docs.0xsplits.xyz/smartcontracts/SplitMain#withdraw
-  },
+  withdraw: (contract, account, withdrawETH, tokens) =>
+    contract.withdraw(account, withdrawETH, tokens),
 
   getSplitAccounts: (collaborators) => {
     const accounts = collaborators.reduce(
