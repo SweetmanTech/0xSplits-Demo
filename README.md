@@ -33,3 +33,9 @@
 
 6. Create a Split in the UI!
 7. Verify the tx was successful in PolygonScan.
+
+## Lesson 9 - Distribute Split
+
+1. Checkout branch: `git checkout lesson/9/distribute`
+2. Open code editor: `code ./`
+3. Run app: `yarn start` or `npm run start`
