@@ -12,11 +12,11 @@ const SplitsService = {
     distributorFee,
     controller
   ) => {
-    // TODO: fill this in following 0xSplits ABI (createSplit).
+    // TODO: fill this in following 0xSplits ABI (createSplit): https://docs.0xsplits.xyz/smartcontracts/SplitMain.
   },
 
   percentageScale: (contract) => {
-    // TODO: fill this in following 0xSplits ABI (PERCENTAGE_SCALE).
+    // TODO: fill this in following 0xSplits ABI (PERCENTAGE_SCALE): https://docs.0xsplits.xyz/smartcontracts/SplitMain.
   },
 
   getSplitAccounts: (collaborators) => {
