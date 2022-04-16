@@ -1,10 +1,14 @@
 import { useWeb3React } from "@web3-react/core";
 import { useState } from "react";
 import { Typography, Button, CircularProgress } from "@mui/material";
-import { ethers } from "ethers";
 import SplitsService from "../../utils/Splits";
 
-const CreateSplitButton = ({ splitData }) => {
+const CreateSplitButton = ({
+  splitData,
+  setAccounts,
+  setPercentAllocations,
+  distributorFee,
+}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
   const { account } = useWeb3React();
@@ -33,13 +37,7 @@ const CreateSplitButton = ({ splitData }) => {
 
     sortedSplitData.sort(compare);
 
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
-
-    const contract = SplitsService.getContract(
-      "0x2ed6c4B5dA6378c7897AC67Ba9e43102Feb694EE",
-      signer
-    );
+    const contract = SplitsService.getContract();
     const accounts = SplitsService.getSplitAccounts(sortedSplitData);
     if (accounts.includes(undefined)) {
       notifyRequirements("Please fill in all accounts");
@@ -61,7 +59,6 @@ const CreateSplitButton = ({ splitData }) => {
       notifyRequirements("Please fill out all percentage share fields");
       return;
     }
-    const distributorFee = 30000;
 
     try {
       const response = await SplitsService.createSplit(
@@ -78,14 +75,17 @@ const CreateSplitButton = ({ splitData }) => {
         (event) => event.event === "CreateSplit"
       );
 
-      onSplitResponse(event.args.split);
+      onSplitResponse(event.args.split, accounts, percentAllocations);
     } catch (e) {
       setLoading(false);
     }
   };
 
-  const onSplitResponse = (splitsAddress) =>
+  const onSplitResponse = (splitsAddress, accounts, percentAllocations) => {
+    setAccounts(accounts);
+    setPercentAllocations(percentAllocations);
     notifyRequirements(`0xSplit Created!!! Address: ${splitsAddress}`);
+  };
 
   return (
     <>

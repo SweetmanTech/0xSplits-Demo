@@ -9,7 +9,7 @@ const initialRows = [
   { id: 1, col1: "0xcfBf34d385EA2d5Eb947063b67eA226dcDA3DC38", col2: "100" },
 ];
 
-const Container = () => {
+const Container = ({ setAccounts, setPercentAllocations, distributorFee }) => {
   const [rows, setRows] = useState(initialRows);
 
   const { activate, account } = useWeb3React();
@@ -72,7 +72,12 @@ const Container = () => {
         />
       </div>
       {account ? (
-        <CreateSplitButton splitData={rows} />
+        <CreateSplitButton
+          splitData={rows}
+          setAccounts={setAccounts}
+          setPercentAllocations={setPercentAllocations}
+          distributorFee={distributorFee}
+        />
       ) : (
         <Button variant="contained" onClick={() => activate(injected)}>
           Connect Wallet

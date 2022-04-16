@@ -2,8 +2,15 @@ import { ethers } from "ethers";
 import abi0xSplits from "./abi0xSplits.json";
 
 const SplitsService = {
-  getContract: (contractAddress, signer) =>
-    new ethers.Contract(contractAddress, abi0xSplits, signer),
+  getContract: () => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+    return new ethers.Contract(
+      "0x2ed6c4B5dA6378c7897AC67Ba9e43102Feb694EE",
+      abi0xSplits,
+      signer
+    );
+  },
 
   createSplit: (
     contract,
@@ -20,6 +27,17 @@ const SplitsService = {
     ),
 
   percentageScale: (contract) => contract.PERCENTAGE_SCALE(),
+
+  distributeETH: (
+    contract,
+    split,
+    accounts,
+    percentAllocations,
+    distributorFee,
+    distributorAddress
+  ) => {
+    // TODO: fill in this fx following docs here: https://docs.0xsplits.xyz/smartcontracts/SplitMain#distributeeth
+  },
 
   getSplitAccounts: (collaborators) => {
     const accounts = collaborators.reduce(
